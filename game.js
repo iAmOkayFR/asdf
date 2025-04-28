@@ -254,3 +254,36 @@ function gameAnimate(){
     
 }
 
+
+
+
+
+function gameAnimate(){
+    requestAnimationFrame(gameAnimate);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update offsets
+    if(hero.position.x >= 400 && hero.velocity.x > 0){
+        offset += hero.velocity.x;
+    } else if(hero.position.x <= 100 && hero.velocity.x < 0){
+        offset += hero.velocity.x;
+    } else {
+        hero.position.x += hero.velocity.x;
+    }
+    
+    backgroundOffset = offset * 0.5; // Background moves slower
+
+    // Draw background
+    context.drawImage(sky, -backgroundOffset, 0, canvas.width * 2, canvas.height);
+
+    // Draw platforms
+    for(let i=0;i<platforms.length;i++) {
+        platforms[i].draw();
+    }
+    platDraw();
+
+    // Move player
+    hero.playerMovement();
+}
+
+
