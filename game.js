@@ -1,91 +1,143 @@
-addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowUp' && hero.velocity.y == 0) {
-        hero.velocity.y = -16;
-    } else if (e.key === 'ArrowRight') {
-        movingRight = true;
-    } else if (e.key === 'ArrowLeft') {
-        movingLeft = true;
-    }
-});
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-addEventListener('keyup', function (e) {
-    if (e.key === 'ArrowRight') {
-        movingRight = false;
-    }
-    if (e.key === 'ArrowLeft') {
-        movingLeft = false;
-    }
-});
+const gravity=0.5;
+class Player {
+    constructor() {
+        this.position= {
+            x: 100,
+            y: 100
+        }
 
+        this.velocity= {
+            x:0,
+            y:0
+        }
 
-
-
-function gameAnimate() {
-    requestAnimationFrame(gameAnimate);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (movingRight) {
-        offset += 2;
-    }
-    if (movingLeft) {
-        offset -= 2;
+        this.height = 30;
+        this.width = 30;
     }
 
-    backgroundOffset = offset * 0.5; // Background scrolls slower
-
-    // Draw background
-    context.drawImage(sky, -backgroundOffset, 0, canvas.width * 2, canvas.height);
-
-    // Draw platforms
-    for (let i = 0; i < platforms.length; i++) {
-        platforms[i].draw();
-    }
-
-    // Draw image platforms
-    platDraw();
-
-    // Move player
-    hero.playerMovement();
-}
-
-
-
-class platformMake {
-    constructor(x, y, width, height) {
-        this.position = { x: x, y: y };
-        this.width = width;
-        this.height = height;
-    }
     draw() {
-        context.fillStyle = 'blue';
-        context.fillRect(this.position.x - offset, this.position.y, this.width, this.height); // <-- minus offset here
+
+        c.fillStyle='red';
+        c.fillRect(this.position.x,this.
+            position.y,this.width,this.height)
+          }
+    
+    update() {
+        this.draw();
+        this.position.x +=this.velocity.x
+        this.position.y += this.velocity.y;
+
+            if(this.position.y + this.height +
+                this.velocity.y <= canvas.height)
+                this.velocity.y+= gravity
+            else this.velocity.y = 0 ;
+            
+    }     
+
+}
+
+class Platform {
+    constructor() {
+        this.position= {
+            x:200,
+            y:200 
+        }
+        this.width=200;
+        this.height=40;
+    }
+    
+    draw() {
+        c.fillStyle='blue'
+        c.fillRect(this.position.x, this.
+            position.y,this.width,this.height)
     }
 }
 
+const player = new Player() 
+const platform = new Platform()
 
-
-
-function platDraw() {
-    let modifiedWidth = platform.width * 0.9;
-    let modifiedHeight = platform.height * 0.9;
-
-    for (let i = 0; i < 7; i++) {
-        context.drawImage(platform, (modifiedWidth * i) - offset, 550, modifiedWidth, modifiedHeight);
-        context.drawImage(platform1, (modifiedWidth * i) - offset, 550, modifiedWidth, modifiedHeight);
-        context.drawImage(platform, (modifiedWidth * i) - offset, 550, modifiedWidth, modifiedHeight);
-    }
-
-    context.drawImage(platformBlock, 200 - offset, 345, 60, 65);
-    context.drawImage(platformBlockk, 250 - offset, 345, 60, 65);
-    context.drawImage(platformBlock, 300 - offset, 345, 60, 65);
-    context.drawImage(platformBlockk, 350 - offset, 345, 60, 65);
-
-    context.drawImage(bigplatform, 550 - offset, 460, 190, 200);
+const keys ={
+    right: {
+        pressed: false
+    },
+    left: {
+        pressed: false
+    },
 }
 
+function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    player.update();
+    platform.draw()
+
+    if(keys.right.pressed) {
+        player.velocity.x=4;
+    }
+    else if (keys.left.pressed) {
+        player.velocity.x=-4
+    }
+    else 
+    player.velocity.x=0
+
+
+    if(player.position.y + player.height
+        >=platform.position.y && 
+        player.position.y + player.height +
+        player.velocity.y <= platform.
+        position.y + platform.height && player.position.x +
+        player.width >= platform.position.x &&  
+        player.position.x <= platform.position.x
+        + platform.width) {
+        player.velocity.y = 0;
+    }
+}
+
+animate();
 
 
 
+addEventListener('keydown', ({ keyCode }) =>{
+    switch (keyCode) {
+        case 65:
+            keys.left.pressed= true
+            break
+        
+        case 83:
+            break
 
+        case 68:
+            keys.right.pressed= true
+            break
 
+        case 87:
+            player.velocity.y -=15
+            break
+    }
 
+})
+
+addEventListener('keyup', ({ keyCode }) =>{
+    switch (keyCode) {
+        case 65:
+            keys.left.pressed= false
+            break
+        
+        case 83:
+            break
+
+        case 68:
+            keys.right.pressed= false
+            break
+
+        case 87:
+            player.velocity.y -=1
+            break
+    }
+
+})
