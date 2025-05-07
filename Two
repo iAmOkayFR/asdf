@@ -1,0 +1,253 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Flex', sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: #fff;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-family: 'Libre Caslon Display', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #c19570;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.order-now {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-now svg {
+  fill: #c19570;
+}
+
+.order-now a {
+  font-weight: bold;
+  color: #c19570;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #fff8f1;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #2e2e2e;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c19570;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: #c19570;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #a57f5e;
+}
+
+.event-contact {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.event-contact a {
+  color: #c19570;
+  text-decoration: underline;
+}
+
+/* Wave SVG */
+.wave {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wave-bottom {
+  transform: rotate(180deg);
+}
+
+/* Sections */
+.section {
+  padding: 4rem 2rem;
+}
+
+.section-subheading {
+  color: #c19570;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+}
+
+blockquote {
+  font-style: italic;
+  color: #777;
+  margin: 1rem 0;
+}
+
+cite {
+  display: block;
+  text-align: right;
+  color: #c19570;
+  font-weight: 600;
+}
+
+/* Images */
+.image-left,
+.image-right {
+  width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+/* Mission Secondary Button */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #c19570;
+  color: #c19570;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #c19570;
+  color: white;
+}
+
+/* Features Section */
+.features {
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .section-heading {
+    font-size: 2.5rem;
+  }
+
+  .image-left {
+    float: left;
+    max-width: 45%;
+    margin-right: 2rem;
+  }
+
+  .image-right {
+    float: right;
+    max-width: 45%;
+    margin-left: 2rem;
+  }
+
+  .intro, .mission, .mission-secondary {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .btn, .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .order-now {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
