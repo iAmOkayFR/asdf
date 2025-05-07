@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patisse Bakery</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Patisse</div>
+    <nav class="nav">
+      <a href="#">Our Story</a>
+      <a href="#">Products</a>
+      <a href="#">Careers</a>
+      <a href="#">Journal</a>
+      <a href="#">Locations</a>
+      <div class="order-now">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">...</svg>
+        <span>Order Now</span>
+        <a href="tel:800123456">800123-456</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="hero-title">It's the simple<br /> pleasures in life...</h1>
+    <p class="hero-subtitle">FRESHLY BAKED, MADE FOR SHARING</p>
+    <button class="btn">Find A Bakery</button>
+    <p class="event-contact">For events, receptions, restaurants, wineries, please contact: <a href="mailto:orders@patissebakery.com">orders@patissebakery.com</a></p>
+  </section>
+
+  <!-- Decorative Wave -->
+  <svg viewBox="0 0 1024 320" class="wave">
+    <path fill="#f1f4ef" d="M0,120 C450,0 450,320 840,134 ... Z"></path>
+  </svg>
+
+  <!-- Philosophy Section -->
+  <section class="section philosophy">
+    <div class="intro">
+      <p class="section-subheading">YOU ARE WELCOME</p>
+      <h2 class="section-heading">We bake bread from natural products, excluding margarine and artificial dyes. Every product is our love and concern for you.</h2>
+      <img src="images/wheat.jpg" alt="Wheat" class="image-left" />
+    </div>
+
+    <div class="mission">
+      <p class="section-subheading">OUR PHILOSOPHY</p>
+      <h3 class="section-title">Tasty, fresh bread baked daily.</h3>
+      <p class="section-description">We regularly hold master classes showcasing our team’s expertise and product quality.</p>
+      <blockquote>“We love experiments, collect the best recipes in order to surprise and delight you. We work with people and for people.”</blockquote>
+      <cite>— Owner and Chef of Patisse</cite>
+      <img src="images/bread.jpg" alt="Bread" class="image-right" />
+    </div>
+
+    <div class="mission-secondary">
+      <p class="section-subheading">OUR MISSION</p>
+      <h3>Baked fresh daily by bakers with passion.</h3>
+      <p class="section-description">We celebrate fresh. Every visit means bread baked that very day — just for you.</p>
+      <button class="btn-secondary">Our Story</button>
+    </div>
+  </section>
+
+  <!-- Decorative Wave -->
+  <svg viewBox="0 0 1024 320" class="wave wave-bottom">
+    <path fill="#f1f4ef" d="M0,150 C200,280 400,10 700,210 ... Z"></path>
+  </svg>
+
+  <!-- Features Section -->
+  <section class="section features">
+    <p class="section-subheading">OUR FEATURES</p>
+    <h2 class="section-heading">Bake with soul and love for 11 years</h2>
+    <img src="images/bredd.jpg" alt="Bakery" class="image-left" />
+    <!-- Include your icons or feature highlights here -->
+  </section>
+</body>
+
+</html>
