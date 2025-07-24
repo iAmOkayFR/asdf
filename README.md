@@ -1,35 +1,32 @@
-https://demo.goodlayers.com/kingster/homepage-2/
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEnginr.UI;
-using TMPro;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
-
-public class movement : MonoBehaviour
+public class IPCameraViewer : MonoBehaviour
 {
-        public int speed = 5;
-        public int coin = 0;
-        public TMP_Text coinadd;
+    public RawImage cameraDisplay;
+    public string streamURL = "http://192.168.1.5:8080/shot.jpg"; // Use your phone's IP address here
+    public float refreshRate = 0.05f; // refresh every 0.05 seconds
 
-        //update is called once per frame
-        void Update()
-        {
-                Debug.Log(Time.deltaTime);
-            float moveY = Input.GetAxis('Vertical');
-            float moveX = Input.GetAxis('horizontal');
-            Vector3 movement = new Vector3(moveX, 0, moveY);
-            transform.translate(moevment * speed * Time.deltaTime);
-        }
+    void Start()
+    {
+        StartCoroutine(RefreshCamera());
+    }
 
-        private void OncollisionEnter(Collision collision)
+    IEnumerator RefreshCamera()
+    {
+        while (true)
         {
-            if(collision.gameObject.compareTag('coin')){\
-            Destroy(collisiongameObject);
-            coin++;
-            ScoreIncrementation();
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(streamURL);
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Texture2D tex = DownloadHandlerTexture.GetContent(www);
+                cameraDisplay.texture = tex;
             }
-        }
 
+            yield return new WaitForSeconds(refreshRate);
+        }
+    }
 }
